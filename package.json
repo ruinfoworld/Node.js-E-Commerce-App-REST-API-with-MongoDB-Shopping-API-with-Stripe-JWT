@@ -1,0 +1,28 @@
+{
+  "name": "node.js-e-commerce-app-rest-api-with-mongodb-shopping-api-with-stripe-jwt",
+  "version": "1.0.0",
+  "description": "Node.js E-Commerce App REST API with MongoDB | Shopping API with Stripe &amp; JWT",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/ruinfoworld/Node.js-E-Commerce-App-REST-API-with-MongoDB-Shopping-API-with-Stripe-JWT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruinfoworld/Node.js-E-Commerce-App-REST-API-with-MongoDB-Shopping-API-with-Stripe-JWT/issues"
+  },
+  "homepage": "https://github.com/ruinfoworld/Node.js-E-Commerce-App-REST-API-with-MongoDB-Shopping-API-with-Stripe-JWT#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.2",
+    "nodemon": "^2.0.20"
+  }
+}
