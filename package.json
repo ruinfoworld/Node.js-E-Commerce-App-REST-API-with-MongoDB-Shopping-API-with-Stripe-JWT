@@ -19,9 +19,12 @@
   },
   "homepage": "https://github.com/ruinfoworld/Node.js-E-Commerce-App-REST-API-with-MongoDB-Shopping-API-with-Stripe-JWT#readme",
   "dependencies": {
+    "babel": "^6.23.0",
     "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.2",
     "nodemon": "^2.0.20"
   }
