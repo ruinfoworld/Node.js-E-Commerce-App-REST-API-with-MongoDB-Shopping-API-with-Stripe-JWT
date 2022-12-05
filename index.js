@@ -34,6 +34,6 @@ app.get("/api/test", () => {
 app.use("/api/users/",userRoute);
 app.use("/api/auth/", authRoute);
 
-app.listen(process.nextTick.PORT_NO || 5000, () => {
+app.listen(process.env.PORT_NO || 5000, () => {
   console.log("Connected!!!!");
 });

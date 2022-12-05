@@ -23,3 +23,13 @@ export const verifyTokenAndAuthentication = (req,res,next) => {
         }
     })
 }
+
+export const verifyTokenAndAdmin = (req,res,next) => {
+    verifyToken(req,res, () => {
+        if(req.user.isAdmin){
+            next();
+        }else{
+            res.status(500).json("You are not allowed to perform this operation!!!");
+        }
+    });
+}
