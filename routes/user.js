@@ -41,6 +41,31 @@ router.delete("/:id", verifyTokenAndAuthentication, async (req, res) => {
   }
 });
 
+// GET USE STATS
+router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
+  const date = new Date();
+  const last_year = new Date(date.setFullYear(date.getFullYear() - 1));
+  try {
+    const data = await User.aggregate([
+      { $match: { createdAt: { $gte: last_year } } },
+      {
+        $project: {
+          month: { $month: "$createdAt" },
+        },
+      },
+      {
+        $group: {
+          _id: '$month',
+          total: { $sum: 1 },
+        },
+      },
+    ]);
+    return res.status(200).json(data);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
 //GET SPECIFIC USER
 
 router.get("/:id", verifyTokenAndAdmin, async (req, res) => {
@@ -65,7 +90,5 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
     return res.status(500).json(err);
   }
 });
-
-router;
 
 export default router;
