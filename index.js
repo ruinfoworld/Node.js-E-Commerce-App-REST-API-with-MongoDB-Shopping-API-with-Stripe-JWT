@@ -7,6 +7,7 @@ import productRoute from "./routes/product.js";
 import cartRoute from  "./routes/cart.js";
 import orderRoute from "./routes/order.js";
 import authRoute from "./routes/auth.js";
+import { application } from "express";
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.get("/api/test", () => {
 
 app.use("/api/users/",userRoute);
 app.use("/api/auth/", authRoute);
+app.use("/api/products", productRoute);
 
 app.listen(process.env.PORT_NO || 5000, () => {
   console.log("Connected!!!!");
