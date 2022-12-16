@@ -36,52 +36,50 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-
-
-
-
 //DELETE PRODUCT
-router.delete("/:id", verifyTokenAndAdmin, async (req,res) => {
-    try{
-        const isExist = await Product.findById(req.params.id);
-        if(!isExist) return res.status(500).json("Product does not exist!!!"); 
-        await Product.findByIdAndDelete(req.params.id);
-        return res.status(200).json("Product has been deleted successfully!!!!");
-    }catch(err){
-        return res.status(500).json(err);
-    }
+router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
+  try {
+    const isExist = await Product.findById(req.params.id);
+    if (!isExist) return res.status(500).json("Product does not exist!!!");
+    await Product.findByIdAndDelete(req.params.id);
+    return res.status(200).json("Product has been deleted successfully!!!!");
+  } catch (err) {
+    return res.status(500).json(err);
+  }
 });
 
 // GET ALL PRODUCT
-router.get("/", async (req,res) => {
-    const qNew = req.query.new;
-    const qCategories = req.query.categories;
-    try{
-        let product;
-        if(qNew){
-            product = await Product.find().sort({createdAt : -1}).limit(1);
-        }else if(qCategories){
-            product = await Product.find({categories : {
-                $in : [qCategories]
-            }})
-        }else {
-            product = await Product.find();
-        }
-        return res.status(200).json(product)
-    }catch(err){
-        return res.status(500).json(err);
+router.get("/", async (req, res) => {
+  const qNew = req.query.new;
+  const qCategories = req.query.categories;
+  try {
+    let product;
+    if (qNew) {
+      product = await Product.find().sort({ createdAt: -1 }).limit(1);
+    } else if (qCategories) {
+      product = await Product.find({
+        categories: {
+          $in: [qCategories],
+        },
+      });
+    } else {
+      product = await Product.find();
     }
-})
+    return res.status(200).json(product);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
 
 //FIND PRODUCT
 
-router.get("/:id", async (req,res) => {
-    try{
-        const productInfo = await Product.findById(req.params.id);
-        return res.status(200).json(productInfo);
-    }catch(err){
-        return res.status(200).json(err);
-    }
+router.get("/:id", async (req, res) => {
+  try {
+    const productInfo = await Product.findById(req.params.id);
+    return res.status(200).json(productInfo);
+  } catch (err) {
+    return res.status(200).json(err);
+  }
 });
 
 export default router;
